@@ -21,3 +21,6 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Login to registry
+        run: doctl registry login
