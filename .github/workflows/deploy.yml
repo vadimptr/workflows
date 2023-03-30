@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: go build .
+        run: go build ./backend
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
@@ -28,10 +28,10 @@ jobs:
         run: doctl registry login -t ${{ secrets.ACCESS_TOKEN }}
 
       - name: Build image
-        run: docker build --tag workflows .
+        run: docker build --tag workflows ./backend
 
       - name: Tag image
         run: docker tag workflows registry.digitalocean.com/workflows-registry/master
 
       - name: Push image
-        run: docker push registry.digitalocean.com/workflows-registry/master
+        run: docker push registry.digitalocean.com/workflows-registry/backend/master
