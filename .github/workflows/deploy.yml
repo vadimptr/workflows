@@ -32,10 +32,10 @@ jobs:
       - name: Build image
         run: |
           cd backend
-          docker build --tag workflows .
+          docker build --tag backend .
 
       - name: Tag image
-        run: docker tag workflows registry.digitalocean.com/workflows-registry/master
+        run: docker tag backend registry.digitalocean.com/workflows-registry/backend/master
 
       - name: Push image
         run: docker push registry.digitalocean.com/workflows-registry/backend/master
