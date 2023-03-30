@@ -40,6 +40,6 @@ jobs:
         run: docker push registry.digitalocean.com/vadimptr-registry/backend/master
 
       - name: Save kubernet configuration
-        run: doctl kubernetes cluster kubeconfig save workflows-cluster --config=deployment.yaml -t ${{ secrets.ACCESS_TOKEN }}
+        run: doctl kubernetes cluster kubeconfig save workflows-cluster -c deployment.yaml -t ${{ secrets.ACCESS_TOKEN }}
 
 
