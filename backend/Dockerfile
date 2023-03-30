@@ -1,8 +1,3 @@
-FROM alpine:3.15
+FROM alpine:latest
 
-COPY /workflows /workflows
-WORKDIR /
-
-EXPOSE 8080
-
-CMD ["/workflows"]
+CMD echo "Hello, World!"
