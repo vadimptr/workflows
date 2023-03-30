@@ -40,7 +40,7 @@ jobs:
         run: docker push registry.digitalocean.com/vadimptr-registry/backend/master
 
       - name: Save DigitalOcean kubeconfig with short-lived credentials
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }} -t ${{ secrets.ACCESS_TOKEN }}
+        run: doctl kubernetes cluster kubeconfig save workflows-cluster --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }} -t ${{ secrets.ACCESS_TOKEN }}
 
       - name: Deploy to DigitalOcean Kubernetes
         run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
