@@ -30,7 +30,9 @@ jobs:
         run: doctl registry login -t ${{ secrets.ACCESS_TOKEN }}
 
       - name: Build image
-        run: docker build --tag workflows ./backend
+        run: |
+          cd backend
+          docker build --tag workflows .
 
       - name: Tag image
         run: docker tag workflows registry.digitalocean.com/workflows-registry/master
