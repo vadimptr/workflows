@@ -10,16 +10,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-backend:
     runs-on: ubuntu-latest
     steps:
+      - name: Change directory to backend
+        run: cd ./backend
+
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build
-        run: |
-          cd backend
-          go build .
+        run: go build .
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
@@ -30,9 +31,7 @@ jobs:
         run: doctl registry login -t ${{ secrets.ACCESS_TOKEN }}
 
       - name: Build image
-        run: |
-          cd backend
-          docker build --tag backend .
+        run: docker build --tag backend .
 
       - name: Tag image
         run: docker tag backend registry.digitalocean.com/vadimptr-registry/backend/master
