@@ -39,10 +39,7 @@ jobs:
       - name: Push image
         run: docker push registry.digitalocean.com/vadimptr-registry/backend/master
 
-      - name: Digital ocean auth init
-        run: doctl auth init
-
       - name: Save kubernet configuration
-        run: doctl kubernetes cluster kubeconfig save workflows-cluster --config=deployment.yaml
+        run: doctl kubernetes cluster kubeconfig save workflows-cluster --config=deployment.yaml -t ${{ secrets.ACCESS_TOKEN }}
 
 
