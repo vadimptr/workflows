@@ -38,3 +38,8 @@ jobs:
 
       - name: Push image
         run: docker push registry.digitalocean.com/vadimptr-registry/backend/master
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply deployment
+        run: kubectl apply -f deployment.yaml
