@@ -40,6 +40,6 @@ jobs:
         run: docker push registry.digitalocean.com/vadimptr-registry/backend/master
 
       - name: Apply deployment
-        run: doctl kubernetes cluster kubeconfig save workflows-cluster --kubeconfig=deployment.yaml
+        run: doctl kubernetes cluster kubeconfig save workflows-cluster --config=deployment.yaml
 
 
